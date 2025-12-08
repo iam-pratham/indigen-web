@@ -556,6 +556,15 @@ const Menu = ({ pageRef }) => {
               onClick={(e) => {
                 e.preventDefault();
                 const currentPath = window.location.pathname;
+                // Always navigate to home when Home is clicked
+                if (item.route === "/") {
+                  navigateWithTransition(
+                    item.route,
+                    isMenuOpen ? toggleMenu : null
+                  );
+                  return;
+                }
+                // For other routes, only navigate if not already on that page
                 if (currentPath === item.route) {
                   if (isMenuOpen) {
                     toggleMenu();

@@ -21,10 +21,17 @@ export const useViewTransition = () => {
   }
 
   function slideInOut(href, onRouteChange) {
+    // Lock scrollbar during transition to prevent flicker
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    
     const overlay = createSVGOverlay();
     const overlayPath = overlay.querySelector(".overlay__path");
 
-    if (!overlayPath) return;
+    if (!overlayPath) {
+      document.body.style.overflow = originalOverflow;
+      return;
+    }
 
     const paths = {
       step1: {
@@ -41,6 +48,8 @@ export const useViewTransition = () => {
 
     const timeline = gsap.timeline({
       onComplete: () => {
+        // Restore scrollbar after transition
+        document.body.style.overflow = originalOverflow;
         if (overlay && overlay.parentNode) {
           overlay.parentNode.removeChild(overlay);
         }
@@ -90,7 +99,8 @@ export const useViewTransition = () => {
 
   const navigateWithTransition = (href, onRouteChange, options = {}) => {
     const currentPath = window.location.pathname;
-    if (currentPath === href) {
+    // Always allow navigation to home page
+    if (currentPath === href && href !== "/") {
       return;
     }
 

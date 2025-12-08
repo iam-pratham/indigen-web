@@ -9,7 +9,6 @@ gsap.registerPlugin(useGSAP);
 
 const Page = () => {
   const { navigateWithTransition } = useViewTransition();
-
   const workPageContainer = useRef(null);
 
   const workItems = useMemo(
@@ -87,6 +86,7 @@ const Page = () => {
   useGSAP(
     () => {
       const q = gsap.utils.selector(workPageContainer);
+      const folderLinks = q("a");
       const folders = q(".folder");
       const folderWrappers = q(".folder-wrapper");
 
@@ -100,6 +100,7 @@ const Page = () => {
       const mouseLeaveHandlers = new Map();
 
       folders.forEach((folder, index) => {
+        const folderLink = folderLinks[index];
         const previewImages = folder.querySelectorAll(".folder-preview-img");
 
         const onEnter = () => {
@@ -161,10 +162,12 @@ const Page = () => {
           });
         };
 
-        mouseEnterHandlers.set(folder, onEnter);
-        mouseLeaveHandlers.set(folder, onLeave);
-        folder.addEventListener("mouseenter", onEnter);
-        folder.addEventListener("mouseleave", onLeave);
+        if (folderLink) {
+          mouseEnterHandlers.set(folderLink, onEnter);
+          mouseLeaveHandlers.set(folderLink, onLeave);
+          folderLink.addEventListener("mouseenter", onEnter);
+          folderLink.addEventListener("mouseleave", onLeave);
+        }
       });
 
       const handleResize = () => {
@@ -186,11 +189,11 @@ const Page = () => {
 
       return () => {
         window.removeEventListener("resize", handleResize);
-        folders.forEach((folder) => {
-          const onEnter = mouseEnterHandlers.get(folder);
-          const onLeave = mouseLeaveHandlers.get(folder);
-          if (onEnter) folder.removeEventListener("mouseenter", onEnter);
-          if (onLeave) folder.removeEventListener("mouseleave", onLeave);
+        folderLinks.forEach((link) => {
+          const onEnter = mouseEnterHandlers.get(link);
+          const onLeave = mouseLeaveHandlers.get(link);
+          if (onEnter) link.removeEventListener("mouseenter", onEnter);
+          if (onLeave) link.removeEventListener("mouseleave", onLeave);
         });
       };
     },

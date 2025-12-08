@@ -1,6 +1,6 @@
 "use client";
 import "./Showreel.css";
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -9,6 +9,38 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Showreel = () => {
   const showreelSecRef = useRef(null);
+  const videoRef = useRef(null);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+
+  // Load video immediately if on homepage (above the fold)
+  useEffect(() => {
+    // Check if we're on the homepage and showreel is visible
+    const isHomePage = window.location.pathname === '/';
+    
+    if (isHomePage) {
+      // Load immediately for homepage
+      setShouldLoadVideo(true);
+    } else {
+      // Lazy load for other pages
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setShouldLoadVideo(true);
+              observer.disconnect();
+            }
+          });
+        },
+        { rootMargin: "300px" } // Start loading earlier
+      );
+
+      if (showreelSecRef.current) {
+        observer.observe(showreelSecRef.current);
+      }
+
+      return () => observer.disconnect();
+    }
+  }, []);
 
   useGSAP(
     () => {
@@ -93,14 +125,20 @@ const Showreel = () => {
   return (
     <section className="showreel" ref={showreelSecRef}>
       <div className="showreel-container">
-        <video
-          src="/featured-work/work-3.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-        />
+        {shouldLoadVideo ? (
+          <video
+            ref={videoRef}
+            src="/featured-work/work-3.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="auto"
+            fetchPriority="high"
+          />
+        ) : (
+          <div style={{ width: "100%", height: "100%", backgroundColor: "#000" }} />
+        )}
       </div>
     </section>
   );

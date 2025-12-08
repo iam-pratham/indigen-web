@@ -95,19 +95,19 @@ const Spotlight = () => {
         <div className="marquee-container" id="marquee-1">
           <div className="marquee">
             <div className="marquee-img-item">
-              <img src="/featured-work/work-1.png" alt="" />
+              <img src="/featured-work/work-1.png" alt="" loading="eager" fetchPriority="high" />
             </div>
             <div className="marquee-img-item marquee-text-item">
               <h1>AI Powered</h1>
             </div>
             <div className="marquee-img-item">
-              <img src="/featured-work/work-2.png" alt="" />
+              <img src="/featured-work/work-2.png" alt="" loading="eager" />
             </div>
             <div className="marquee-img-item">
-              <img src="/featured-work/work-3.png" alt="" />
+              <img src="/featured-work/work-3.png" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/featured-work/work-5.png" alt="" />
+              <img src="/featured-work/work-5.png" alt="" loading="lazy" />
             </div>
           </div>
         </div>
@@ -115,19 +115,19 @@ const Spotlight = () => {
         <div className="marquee-container" id="marquee-2">
           <div className="marquee">
             <div className="marquee-img-item">
-              <img src="/featured-work/work-1.png" alt="" />
+              <img src="/featured-work/work-1.png" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/featured-work/work-2.png" alt="" />
+              <img src="/featured-work/work-2.png" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/featured-work/work-3.png" alt="" />
+              <img src="/featured-work/work-3.png" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item marquee-text-item">
               <h1>SaaS Solutions</h1>
             </div>
             <div className="marquee-img-item">
-              <img src="/featured-work/work-5.png" alt="" />
+              <img src="/featured-work/work-5.png" alt="" loading="lazy" />
             </div>
           </div>
         </div>
@@ -135,19 +135,19 @@ const Spotlight = () => {
         <div className="marquee-container" id="marquee-3">
           <div className="marquee">
             <div className="marquee-img-item">
-              <img src="/featured-work/work-1.png" alt="" />
+              <img src="/featured-work/work-1.png" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item marquee-text-item">
               <h1>Automation</h1>
             </div>
             <div className="marquee-img-item">
-              <img src="/featured-work/work-2.png" alt="" />
+              <img src="/featured-work/work-2.png" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/featured-work/work-3.png" alt="" />
+              <img src="/featured-work/work-3.png" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/featured-work/work-5.png" alt="" />
+              <img src="/featured-work/work-5.png" alt="" loading="lazy" />
             </div>
           </div>
         </div>
@@ -155,19 +155,19 @@ const Spotlight = () => {
         <div className="marquee-container" id="marquee-4">
           <div className="marquee">
             <div className="marquee-img-item">
-              <img src="/featured-work/work-1.png" alt="" />
+              <img src="/featured-work/work-1.png" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/featured-work/work-2.png" alt="" />
+              <img src="/featured-work/work-2.png" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/featured-work/work-3.png" alt="" />
+              <img src="/featured-work/work-3.png" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item marquee-text-item">
               <h1>Innovation</h1>
             </div>
             <div className="marquee-img-item">
-              <img src="/featured-work/work-5.png" alt="" />
+              <img src="/featured-work/work-5.png" alt="" loading="lazy" />
             </div>
           </div>
         </div>

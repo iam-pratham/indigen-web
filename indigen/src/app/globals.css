@@ -30,6 +30,28 @@
 html {
   overflow-x: hidden;
   width: 100%;
+  /* Custom green scrollbar */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--base-500) var(--base-100); /* Firefox: thumb and track */
+}
+
+/* Chrome, Safari, Opera - Custom scrollbar */
+html::-webkit-scrollbar {
+  width: 4px;
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--base-100);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--base-500);
+  border-radius: 2px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--base-500);
+  opacity: 0.8;
 }
 
 body {
@@ -38,6 +60,28 @@ body {
   overflow-x: hidden;
   width: 100%;
   position: relative;
+  /* Custom green scrollbar */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--base-500) var(--base-100); /* Firefox: thumb and track */
+}
+
+/* Chrome, Safari, Opera - Custom scrollbar */
+body::-webkit-scrollbar {
+  width: 4px;
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--base-100);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: var(--base-500);
+  border-radius: 2px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: var(--base-500);
+  opacity: 0.8;
 }
 
 h1,
