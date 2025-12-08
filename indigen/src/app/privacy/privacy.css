@@ -1,0 +1,157 @@
+.privacy {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--base-100);
+  color: #e5e7eb;
+  overflow-x: hidden;
+  padding: 8rem 0 0;
+}
+
+
+.privacy .privacy-copy {
+  width: 75%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  gap: 4rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.privacy .privacy-copy .privacy-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+}
+
+.privacy .privacy-copy .privacy-col:first-child {
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.privacy .privacy-copy .privacy-col h1 {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-size: 9rem;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #e5e7eb;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+.privacy .privacy-content {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.privacy .privacy-content h2 {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #e5e7eb;
+  margin-top: 4rem;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+
+.privacy .privacy-content > div {
+  margin-bottom: 3rem;
+}
+
+.privacy .privacy-content p {
+  font-family: "PP Neue Montreal";
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #d1d5db;
+  margin-bottom: 1.5rem;
+}
+
+.privacy .privacy-content p.sm {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+.privacy .privacy-content ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 2rem;
+}
+
+.privacy .privacy-content ul li {
+  font-family: "Geist Mono";
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #d1d5db;
+  margin-bottom: 0.75rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.privacy .privacy-content ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #70FF4D;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.privacy .privacy-content strong {
+  color: #e5e7eb;
+  font-weight: 600;
+}
+
+@media (max-width: 1000px) {
+  .privacy {
+    padding: 6rem 0 4rem;
+  }
+
+  .privacy .privacy-copy {
+    width: 90%;
+    gap: 3rem;
+    padding: 1.25rem;
+  }
+
+  .privacy .privacy-copy .privacy-col h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .privacy .privacy-content {
+    max-width: 100%;
+  }
+
+  .privacy .privacy-content h2 {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+
+  .privacy .privacy-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .privacy .privacy-content ul li {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+

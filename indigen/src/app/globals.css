@@ -1,0 +1,176 @@
+@import "./fonts.css";
+
+:root {
+  --base-100: #1a1a1a;
+  --base-200: #252525;
+  --base-300: #6b7280;
+  --base-400: #2a2a2a;
+  --base-500: #70FF4D;
+
+  --accent-1: #8b5cf6;
+  --accent-2: #ec4899;
+  --accent-3: #10b981;
+  --accent-4: #f59e0b;
+  --accent-5: #06b6d4;
+
+  --variant-1: var(--base-200);
+  --variant-2: var(--base-400);
+  --variant-3: var(--base-500);
+  --disabled-folder-bg: #202020;
+  --disabled-folder-fg: #404040;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  background-color: var(--base-100);
+  color: #e5e7eb;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-transform: uppercase;
+  font-family: "Big Shoulders Display";
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.125rem;
+}
+
+h1 {
+  font-size: 8rem;
+}
+
+h2 {
+  font-size: 6rem;
+  letter-spacing: -0.2rem;
+}
+
+h3 {
+  font-size: 5rem;
+  letter-spacing: -0.15rem;
+}
+
+h4 {
+  font-size: 4rem;
+  letter-spacing: -0.1rem;
+}
+
+p {
+  font-family: "PP Neue Montreal";
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+p.lg {
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+p.sm,
+a.sm {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: "Geist Mono";
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.15;
+  color: #ffffff;
+  letter-spacing: 0.1rem;
+}
+
+p.cap {
+  text-transform: uppercase;
+  font-family: "PP Pangram Sans";
+  font-size: 0.9rem;
+  font-weight: 900;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
+.page-transition-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.page-transition-overlay svg {
+  width: 100%;
+  height: 100%;
+}
+
+.page-transition-overlay .overlay__path {
+  fill: var(--base-500);
+  stroke: none;
+}
+
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: 0 !important;
+  }
+
+  p.lg {
+    font-size: 1.125rem;
+  }
+
+  p.sm {
+    font-size: 0.8rem;
+    letter-spacing: 0.05rem;
+  }
+
+  .container {
+    padding: 1.25rem;
+  }
+}
+
+@media (min-width: 2400px) {
+  h1 {
+    font-size: 10rem;
+  }
+}
