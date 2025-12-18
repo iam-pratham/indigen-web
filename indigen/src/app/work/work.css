@@ -220,18 +220,7 @@
     border-top-left-radius: 0 !important;
   }
 
-  .folders .row:nth-child(2) .folder.variant-2 .folder-index,
-  .folders .row:nth-child(2) .folder.variant-2 .folder-index::after,
-  .folders .row:nth-child(2) .folder.variant-2 .folder-name {
-    background-color: var(--variant-3);
-  }
 
-  .folders .row:nth-child(2) .folder.variant-3 .folder-index,
-  .folders .row:nth-child(2) .folder.variant-3 .folder-index::after,
-  .folders .row:nth-child(2) .folder.variant-3 .folder-name {
-    background-color: var(--variant-2);
-    color: var(--base-100);
-  }
 
   .folders {
     padding: 15rem 0;

@@ -2,6 +2,10 @@
   background-color: var(--base-100);
 }
 
+.cta .why-choose {
+  font-size: 1.15rem !important; /* increased from sm (0.85rem) */ 
+}
+
 .cta .container {
   display: flex;
   flex-direction: column;

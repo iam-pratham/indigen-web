@@ -24,7 +24,7 @@ export const useViewTransition = () => {
     // Lock scrollbar during transition to prevent flicker
     const originalOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
-    
+
     const overlay = createSVGOverlay();
     const overlayPath = overlay.querySelector(".overlay__path");
 
@@ -100,7 +100,7 @@ export const useViewTransition = () => {
   const navigateWithTransition = (href, onRouteChange, options = {}) => {
     const currentPath = window.location.pathname;
     // Always allow navigation to home page
-    if (currentPath === href && href !== "/") {
+    if (currentPath === href) {
       return;
     }
 

@@ -49,17 +49,17 @@ const Page = () => {
 
           <Copy animateOnScroll={true}>
             <p className="lg">
-              Indigen Services & AI SaaS Development is a next-generation technology 
-              company specializing in Artificial Intelligence, SaaS platforms, automation 
-              systems, and full-stack development. Founded in 2023, we've quickly grown 
-              into a full-stack innovation partner for startups, enterprises, and 
+              Indigen Services is a next-generation technology
+              company specializing in Artificial Intelligence, SaaS platforms, automation
+              systems, and full-stack development. Founded in 2019, we've quickly grown
+              into a full-stack innovation partner for startups, enterprises, and
               government organizations.
             </p>
 
             <p className="lg">
-              Our core mission is simple: "Make businesses smarter, faster, and future-ready 
-              using AI + technology." We build intelligent digital products, scalable SaaS 
-              applications, advanced automation systems, and AI-powered business tools that 
+              Our core mission is simple: "Make businesses smarter, faster, and future-ready
+              using AI + technology." We build intelligent digital products, scalable SaaS
+              applications, advanced automation systems, and AI-powered business tools that
               reduce manual work, automate processes, and accelerate business growth.
             </p>
           </Copy>

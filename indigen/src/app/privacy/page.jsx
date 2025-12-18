@@ -27,25 +27,25 @@ const Page = () => {
     <section className="privacy">
       <div className="privacy-copy">
         <div className="privacy-col">
-          <Copy delay={0.8}>
+          <Copy delay={0.1}>
             <h1>Privacy Policy</h1>
           </Copy>
         </div>
 
         <div className="privacy-col">
           <div className="privacy-content">
-            <Copy animateOnScroll={true} delay={0}>
+            <Copy animateOnScroll={true} delay={0.3}>
               <p className="sm">Last Updated: December 2025</p>
             </Copy>
 
-            <Copy animateOnScroll={true} delay={0}>
+            <Copy animateOnScroll={true} delay={0.5}>
               <h2>1. Introduction</h2>
             </Copy>
-            <Copy animateOnScroll={true} delay={0.2}>
+            <Copy animateOnScroll={true} delay={0.6}>
               <p>
-                Indigen Services & AI SaaS Development ("we," "our," or "us") is committed to protecting your privacy. 
-                This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you 
-                visit our website, use our services, or interact with our AI-powered solutions, SaaS platforms, and 
+                Indigen Services & AI SaaS Development ("we," "our," or "us") is committed to protecting your privacy.
+                This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you
+                visit our website, use our services, or interact with our AI-powered solutions, SaaS platforms, and
                 automation systems.
               </p>
             </Copy>
@@ -91,8 +91,8 @@ const Page = () => {
             </Copy>
             <Copy animateOnScroll={true} delay={0.2}>
               <p>
-                We implement industry-standard security measures to protect your data, including encryption, secure 
-                authentication, and regular security audits. Our AI systems and SaaS platforms are built with security 
+                We implement industry-standard security measures to protect your data, including encryption, secure
+                authentication, and regular security audits. Our AI systems and SaaS platforms are built with security
                 as a core principle, ensuring your business data remains confidential and protected.
               </p>
             </Copy>
@@ -135,7 +135,7 @@ const Page = () => {
             </Copy>
             <Copy animateOnScroll={true} delay={0.2}>
               <p>
-                We use cookies and similar technologies to enhance your experience, analyze website traffic, and 
+                We use cookies and similar technologies to enhance your experience, analyze website traffic, and
                 improve our services. You can control cookie preferences through your browser settings.
               </p>
             </Copy>
@@ -145,7 +145,7 @@ const Page = () => {
             </Copy>
             <Copy animateOnScroll={true} delay={0.2}>
               <p>
-                Our services may integrate with third-party platforms (e.g., payment processors, cloud providers, 
+                Our services may integrate with third-party platforms (e.g., payment processors, cloud providers,
                 analytics tools). These services have their own privacy policies, and we encourage you to review them.
               </p>
             </Copy>
@@ -155,7 +155,7 @@ const Page = () => {
             </Copy>
             <Copy animateOnScroll={true} delay={0.2}>
               <p>
-                We retain your information only for as long as necessary to fulfill the purposes outlined in this 
+                We retain your information only for as long as necessary to fulfill the purposes outlined in this
                 policy, comply with legal obligations, or resolve disputes.
               </p>
             </Copy>
@@ -165,7 +165,7 @@ const Page = () => {
             </Copy>
             <Copy animateOnScroll={true} delay={0.2}>
               <p>
-                We may update this Privacy Policy from time to time. We will notify you of any material changes by 
+                We may update this Privacy Policy from time to time. We will notify you of any material changes by
                 posting the new policy on this page and updating the "Last Updated" date.
               </p>
             </Copy>

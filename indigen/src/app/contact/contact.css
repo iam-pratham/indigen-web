@@ -89,8 +89,8 @@
 @media (max-width: 1000px) {
   .contact {
     height: 100%;
-    min-height: 150svh;
-    padding: 8rem 0;
+    min-height: 130svh;
+    padding: 4rem 0;
   }
 
   .contact .contact-copy {
@@ -98,6 +98,11 @@
     width: 100%;
     gap: 4rem;
     padding: 1.25rem;
+  }
+
+  .contact .contact-copy .contact-col {
+    margin-left: 0;
+    width: 100%;
   }
 
   .contact .contact-copy .contact-col h2 {

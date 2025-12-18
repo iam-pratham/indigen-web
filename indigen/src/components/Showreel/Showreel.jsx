@@ -13,33 +13,25 @@ const Showreel = () => {
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 
   // Load video immediately if on homepage (above the fold)
+  // Lazy load video when in viewport
   useEffect(() => {
-    // Check if we're on the homepage and showreel is visible
-    const isHomePage = window.location.pathname === '/';
-    
-    if (isHomePage) {
-      // Load immediately for homepage
-      setShouldLoadVideo(true);
-    } else {
-      // Lazy load for other pages
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setShouldLoadVideo(true);
-              observer.disconnect();
-            }
-          });
-        },
-        { rootMargin: "300px" } // Start loading earlier
-      );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShouldLoadVideo(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "200px" } // Start loading slightly before it enters viewport
+    );
 
-      if (showreelSecRef.current) {
-        observer.observe(showreelSecRef.current);
-      }
-
-      return () => observer.disconnect();
+    if (showreelSecRef.current) {
+      observer.observe(showreelSecRef.current);
     }
+
+    return () => observer.disconnect();
   }, []);
 
   useGSAP(
@@ -125,7 +117,7 @@ const Showreel = () => {
   return (
     <section className="showreel" ref={showreelSecRef}>
       <div className="showreel-container">
-        {shouldLoadVideo ? (
+        {shouldLoadVideo && typeof window !== 'undefined' && window.innerWidth >= 1000 ? (
           <video
             ref={videoRef}
             src="/featured-work/work-3.mp4"

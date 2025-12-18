@@ -71,7 +71,7 @@
   letter-spacing: -0.01em;
 }
 
-.privacy .privacy-content > div {
+.privacy .privacy-content>div {
   margin-bottom: 3rem;
 }
 
@@ -121,7 +121,7 @@
 
 @media (max-width: 1000px) {
   .privacy {
-    padding: 6rem 0 4rem;
+    padding: 6rem 0 0;
   }
 
   .privacy .privacy-copy {
@@ -154,4 +154,3 @@
     line-height: 1.7;
   }
 }
-

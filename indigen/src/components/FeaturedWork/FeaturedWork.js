@@ -12,10 +12,10 @@ export default function FeaturedWork() {
 
   useGSAP(
     () => {
-      const createFeaturedWorkItem = (project, isFirstRow = false) => {
+      const createFeaturedWorkItem = (project) => {
         const featuredWorkItem = document.createElement("div");
         featuredWorkItem.className = "featured-work-item";
-        const preloadValue = isFirstRow ? "auto" : "metadata";
+        const preloadValue = "metadata";
         featuredWorkItem.innerHTML = `
           <div class="featured-work-item-img">
            <div class="featured-work-item-copy">
@@ -32,30 +32,25 @@ export default function FeaturedWork() {
             ></video>
           </div>
       `;
-        
+
         const video = featuredWorkItem.querySelector("video");
         if (video) {
-          if (isFirstRow) {
-            // Preload first row videos immediately
-            video.load();
-          } else {
-            // Lazy load other videos when item enters viewport
-            const videoObserver = new IntersectionObserver(
-              (entries) => {
-                entries.forEach((entry) => {
-                  if (entry.isIntersecting) {
-                    const videoElement = entry.target;
-                    videoElement.load();
-                    videoObserver.unobserve(videoElement);
-                  }
-                });
-              },
-              { rootMargin: "300px" }
-            );
-            videoObserver.observe(video);
-          }
+          // Lazy load all videos when item enters viewport
+          const videoObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const videoElement = entry.target;
+                  videoElement.load();
+                  videoObserver.unobserve(videoElement);
+                }
+              });
+            },
+            { rootMargin: "200px" }
+          );
+          videoObserver.observe(video);
         }
-        
+
         return featuredWorkItem;
       };
 
@@ -69,12 +64,10 @@ export default function FeaturedWork() {
 
         const leftItemIndex = i % projects.length;
         const rightItemIndex = (i + 1) % projects.length;
-        const isFirstRow = i === 0; // First row should preload
-
-        row.appendChild(createFeaturedWorkItem(projects[leftItemIndex], isFirstRow));
+        row.appendChild(createFeaturedWorkItem(projects[leftItemIndex]));
 
         if (i + 1 < projects.length * 2) {
-          row.appendChild(createFeaturedWorkItem(projects[rightItemIndex], isFirstRow));
+          row.appendChild(createFeaturedWorkItem(projects[rightItemIndex]));
         }
 
         workContainer.appendChild(row);

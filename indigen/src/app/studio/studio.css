@@ -9,7 +9,7 @@
 .studio-page .studio-header {
   position: relative;
   width: 100%;
-  height: 90svh;
+  height: 75svh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,19 +59,46 @@
 .studio-page .studio-copy p {
   width: 50%;
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
   margin-bottom: 4rem;
+  font-size: 1.5rem;
 }
 
 @media (max-width: 1000px) {
-  .studio-page .studio-copy .studio-copy-img,
+  .studio-page .studio-header {
+    height: 50svh;
+  }
+
+  .studio-page .studio-header .container .studio-header-row:nth-child(1) {
+    justify-content: flex-start;
+  }
+
+  .studio-page .studio-header .container .studio-header-row h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+  }
+
+  .studio-page .studio-copy .container {
+    padding: 0 1.25rem 4rem 1.25rem;
+    gap: 2rem;
+  }
+
+  .studio-page .studio-copy .studio-copy-img {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
   .studio-page .studio-copy p {
     width: 100%;
+    font-size: 1.125rem;
+    text-align: left;
+    margin-bottom: 2rem;
+    line-height: 1.5;
   }
 }
 
 @media (min-width: 2400px) {
-  .studio-page .studio-header .container .studio-header-row h1  {
+  .studio-page .studio-header .container .studio-header-row h1 {
     font-size: 20rem;
   }
 }

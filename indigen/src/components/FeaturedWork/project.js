@@ -1,6 +1,6 @@
 export const projects = [
   {
-    name: "Shabari Naturals Government Initiation",
+    name: "Shabari Naturals Government Initiative",
     description: "Government initiative to promote tribal products.",
     video: "/featured-work/work-1.mp4",
     route: "/sample-project",

@@ -23,12 +23,11 @@ const Page = () => {
     const config = {
       speed: 3,
       imageCount: 10,
-      size: 300,
+      size: window.innerWidth < 1000 ? 150 : 300,
       changeDirectionDelay: 20,
       edgeOffset: -40,
     };
 
-    let isDesktop = window.innerWidth >= 1000;
     let screensaverElement = null;
 
     const preloadedImages = [];
@@ -76,8 +75,6 @@ const Page = () => {
     };
 
     const startAnimation = async () => {
-      if (!isDesktop) return;
-
       stopAnimation();
 
       await preloadImages();
@@ -89,6 +86,10 @@ const Page = () => {
       screensaverElement.setAttribute("data-timestamp", Date.now().toString());
       container.appendChild(screensaverElement);
       screensaverRef.current = screensaverElement;
+
+      // Update size based on current width in case of resize
+      const currentSize = window.innerWidth < 1000 ? 150 : 300;
+      config.size = currentSize;
 
       const containerRect = container.getBoundingClientRect();
       let posX = containerRect.width / 2 - config.size / 2;
@@ -116,7 +117,6 @@ const Page = () => {
         if (
           !screensaverElement ||
           !screensaverElement.parentNode ||
-          !isDesktop ||
           (container &&
             container.getElementsByClassName("screensaver").length > 1)
         ) {
@@ -172,21 +172,13 @@ const Page = () => {
     };
 
     const handleResize = () => {
-      const wasDesktop = isDesktop;
-      isDesktop = window.innerWidth >= 1000;
-
-      if (isDesktop && !wasDesktop) {
-        startAnimation();
-      } else if (!isDesktop && wasDesktop) {
-        stopAnimation();
-      }
+      // Restart animation on resize to recalculate bounds and size
+      startAnimation();
     };
 
     window.addEventListener("resize", handleResize);
 
-    if (isDesktop) {
-      startAnimation();
-    }
+    startAnimation();
 
     return () => {
       stopAnimation();
@@ -231,7 +223,7 @@ const Page = () => {
             <Copy delay={1.4}>
               <p className="sm">Credits</p>
               <p>Indigen Services</p>
-              <p>Founded 2023</p>
+              <p>Founded 2019</p>
             </Copy>
           </div>
         </div>

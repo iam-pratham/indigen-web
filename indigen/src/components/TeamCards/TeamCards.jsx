@@ -25,7 +25,7 @@ export default function TeamCards() {
         const cards = cardsRef.current;
 
         if (!stickySection || !stickyHeader || !cards || cards.length === 0) {
-          return () => {};
+          return () => { };
         }
 
         let stickyHeight = 0;

@@ -501,7 +501,7 @@ const Menu = ({ pageRef }) => {
 
             <div className="menu-content-group">
               <p>Founded</p>
-              <p>2023</p>
+              <p>2019</p>
             </div>
 
             <div className="menu-content-group">
@@ -556,21 +556,14 @@ const Menu = ({ pageRef }) => {
               onClick={(e) => {
                 e.preventDefault();
                 const currentPath = window.location.pathname;
-                // Always navigate to home when Home is clicked
-                if (item.route === "/") {
-                  navigateWithTransition(
-                    item.route,
-                    isMenuOpen ? toggleMenu : null
-                  );
-                  return;
-                }
-                // For other routes, only navigate if not already on that page
+
                 if (currentPath === item.route) {
                   if (isMenuOpen) {
                     toggleMenu();
                   }
                   return;
                 }
+
                 navigateWithTransition(
                   item.route,
                   isMenuOpen ? toggleMenu : null

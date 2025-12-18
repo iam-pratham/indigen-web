@@ -48,10 +48,12 @@
   align-items: center;
   border-radius: 1rem;
   overflow: hidden;
+  background-color: var(--base-200);
 }
 
 .spotlight .marquee-img-item.marquee-text-item {
   flex: 1;
+  background-color: transparent;
 }
 
 .spotlight .marquee-img-item h1 {

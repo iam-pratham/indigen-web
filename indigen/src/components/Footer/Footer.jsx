@@ -92,8 +92,9 @@ const Footer = () => {
           typeof window !== "undefined" ? window.innerHeight : 800;
         const baseOnWidth = Math.floor(viewportWidth * 0.18);
         const baseOnHeight = Math.floor(viewportHeight * 0.22);
+        const minSize = viewportWidth < 1000 ? 120 : 300;
         return Math.max(
-          300,
+          minSize,
           Math.min(config.imageSize, baseOnWidth, baseOnHeight)
         );
       };

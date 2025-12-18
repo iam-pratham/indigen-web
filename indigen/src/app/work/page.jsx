@@ -15,7 +15,7 @@ const Page = () => {
     () => [
       {
         index: "01",
-        name: "Shabari Naturals Government Initiation",
+        name: "Shabari Naturals Government Initiative",
         href: "/sample-project",
         variant: "variant-1",
         images: [

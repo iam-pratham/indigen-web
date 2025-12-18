@@ -11,7 +11,7 @@ const CTACard = () => {
         <div className="cta-copy">
           <div className="cta-col">
             <Copy animateOnScroll={true}>
-              <p className="sm">Why Choose Indigen</p>
+              <p className="sm why-choose">Why Choose Indigen</p>
             </Copy>
           </div>
 

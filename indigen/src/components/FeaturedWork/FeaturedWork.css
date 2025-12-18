@@ -67,3 +67,16 @@
   text-decoration: none;
   color: inherit;
 }
+
+@media (max-width: 1000px) {
+  .featured-work-list {
+    padding: 4rem 1.25rem;
+    gap: 2rem;
+  }
+
+  .featured-work-list .row {
+    width: 100%;
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
