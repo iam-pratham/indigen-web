@@ -95,19 +95,19 @@ const Spotlight = () => {
         <div className="marquee-container" id="marquee-1">
           <div className="marquee">
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_1.png" alt="" loading="eager" fetchPriority="high" />
+              <img src="/spotlight/spotlight_1.webp" alt="" loading="eager" fetchPriority="high" />
             </div>
             <div className="marquee-img-item marquee-text-item">
               <h1>AI Powered</h1>
             </div>
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_2.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_2.webp" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_3.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_3.webp" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_4.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_4.webp" alt="" loading="lazy" />
             </div>
           </div>
         </div>
@@ -115,19 +115,19 @@ const Spotlight = () => {
         <div className="marquee-container" id="marquee-2">
           <div className="marquee">
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_1.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_1.webp" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_2.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_2.webp" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_3.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_3.webp" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item marquee-text-item">
               <h1>SaaS Solutions</h1>
             </div>
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_4.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_4.webp" alt="" loading="lazy" />
             </div>
           </div>
         </div>
@@ -135,19 +135,19 @@ const Spotlight = () => {
         <div className="marquee-container" id="marquee-3">
           <div className="marquee">
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_1.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_1.webp" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item marquee-text-item">
               <h1>Automation</h1>
             </div>
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_2.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_2.webp" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_3.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_3.webp" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_4.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_4.webp" alt="" loading="lazy" />
             </div>
           </div>
         </div>
@@ -155,19 +155,19 @@ const Spotlight = () => {
         <div className="marquee-container" id="marquee-4">
           <div className="marquee">
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_1.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_1.webp" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_2.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_2.webp" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_3.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_3.webp" alt="" loading="lazy" />
             </div>
             <div className="marquee-img-item marquee-text-item">
               <h1>Innovation</h1>
             </div>
             <div className="marquee-img-item">
-              <img src="/spotlight/spotlight_4.png" alt="" loading="lazy" />
+              <img src="/spotlight/spotlight_4.webp" alt="" loading="lazy" />
             </div>
           </div>
         </div>
