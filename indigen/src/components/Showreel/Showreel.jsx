@@ -120,7 +120,7 @@ const Showreel = () => {
         {shouldLoadVideo && typeof window !== 'undefined' && window.innerWidth >= 1000 ? (
           <video
             ref={videoRef}
-            src="/featured-work/work-3.mp4"
+            src="/featured-work/work-3.webm"
             autoPlay
             loop
             muted
