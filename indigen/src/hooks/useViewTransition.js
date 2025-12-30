@@ -2,8 +2,11 @@
 import { useTransitionRouter } from "next-view-transitions";
 import { gsap } from "gsap";
 
+import { usePathname } from "next/navigation";
+
 export const useViewTransition = () => {
   const router = useTransitionRouter();
+  const pathname = usePathname();
 
   function createSVGOverlay() {
     let overlay = document.querySelector(".page-transition-overlay");
@@ -63,7 +66,7 @@ export const useViewTransition = () => {
       .to(
         overlayPath,
         {
-          duration: 0.6,
+          duration: 0.4,
           ease: "power4.in",
           attr: { d: paths.step1.inBetween },
         },
@@ -98,9 +101,11 @@ export const useViewTransition = () => {
   }
 
   const navigateWithTransition = (href, onRouteChange, options = {}) => {
-    const currentPath = window.location.pathname;
-    // Always allow navigation to home page
-    if (currentPath === href) {
+    // Normalize paths to ignore trailing slashes
+    const currentPath = pathname.replace(/\/$/, "") || "/";
+    const targetPath = href.replace(/\/$/, "") || "/";
+
+    if (currentPath === targetPath) {
       return;
     }
 

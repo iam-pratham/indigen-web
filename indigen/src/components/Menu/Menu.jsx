@@ -6,6 +6,7 @@ import { SplitText } from "gsap/all";
 import { useGSAP } from "@gsap/react";
 import { useLenis } from "lenis/react";
 import { useViewTransition } from "@/hooks/useViewTransition";
+import { usePathname } from "next/navigation";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
@@ -316,6 +317,46 @@ const Menu = ({ pageRef }) => {
     }
   }, [lenis, isMenuOpen]);
 
+  const closeMenuImmediate = () => {
+    const menuOverlay = menuOverlayRef.current;
+    const menuImage = menuImageRef.current;
+    const menuLinks = menuLinksRef.current;
+    const linkHighlighter = linkHighlighterRef.current;
+    const menuLinksWrapper = menuLinksWrapperRef.current;
+    const openLabel = openLabelRef.current;
+    const closeLabel = closeLabelRef.current;
+    const menuCols = menuColsRef.current;
+
+    gsap.set(openLabel, { y: "0%" });
+    gsap.set(closeLabel, { y: "0%" });
+    gsap.set(menuImage, { y: "0", scale: 0.5, opacity: 0.25 });
+    gsap.set(menuLinks, { y: "150%" });
+    gsap.set(linkHighlighter, { y: "150%" });
+    gsap.set(".menu-link", { overflow: "hidden" });
+
+    menuCols.forEach((col) => {
+      if (!col) return;
+      const splitLines = col.querySelectorAll(".split-line");
+      gsap.set(splitLines, { y: "100%" });
+    });
+
+    gsap.set(menuLinksWrapper, { x: 0 });
+    currentX.current = 0;
+    targetX.current = 0;
+
+    // Reset overlay
+    gsap.set(menuOverlay, {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+      onComplete: () => {
+        gsap.set(menuOverlay, {
+          clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        });
+        setIsMenuOpen(false);
+        setIsMenuAnimating(false);
+      }
+    });
+  };
+
   const toggleMenu = () => {
     if (isMenuAnimating) return;
     setIsMenuAnimating(true);
@@ -453,6 +494,8 @@ const Menu = ({ pageRef }) => {
     }
   };
 
+  const pathname = usePathname();
+
   return (
     <>
       <nav>
@@ -461,11 +504,10 @@ const Menu = ({ pageRef }) => {
             href="/"
             onClick={(e) => {
               e.preventDefault();
-              const currentPath = window.location.pathname;
-              if (currentPath === "/") {
+              if (pathname === "/") {
                 return;
               }
-              navigateWithTransition("/", isMenuOpen ? toggleMenu : null);
+              navigateWithTransition("/", isMenuOpen ? closeMenuImmediate : null);
             }}
           >
             <span className="nav-logo-text">INDIGEN</span>
@@ -555,9 +597,7 @@ const Menu = ({ pageRef }) => {
               }}
               onClick={(e) => {
                 e.preventDefault();
-                const currentPath = window.location.pathname;
-
-                if (currentPath === item.route) {
+                if (pathname === item.route) {
                   if (isMenuOpen) {
                     toggleMenu();
                   }
@@ -566,7 +606,7 @@ const Menu = ({ pageRef }) => {
 
                 navigateWithTransition(
                   item.route,
-                  isMenuOpen ? toggleMenu : null
+                  isMenuOpen ? closeMenuImmediate : null
                 );
               }}
             >

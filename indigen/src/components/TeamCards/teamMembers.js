@@ -2,7 +2,7 @@ export const teamMembers = [
   {
     id: "card-1",
     name: "Yash",
-    img: "/team-cards/team-member-1.jpg",
+    img: "/team-cards/team-member-1.webp",
     alt: "Yash",
     description:
       "Tech Head and Sales. Leads technical architecture and client relationships. Expert in AI, SaaS development, and turning complex requirements into scalable solutions.",
@@ -10,7 +10,7 @@ export const teamMembers = [
   {
     id: "card-2",
     name: "Sanket",
-    img: "/team-cards/team-member-2.jpg",
+    img: "/team-cards/team-member-2.webp",
     alt: "Sanket",
     description:
       "Operations and Management. Ensures smooth project delivery, resource allocation, and team coordination. Keeps everything on track and clients happy.",
@@ -18,7 +18,7 @@ export const teamMembers = [
   {
     id: "card-3",
     name: "Vaishnavi",
-    img: "/team-cards/team-member-3.jpg",
+    img: "/team-cards/team-member-3.webp",
     alt: "Vaishnavi",
     description:
       "Team Lead. Manages development workflows, code quality, and team collaboration. Bridges the gap between technical execution and business goals.",
@@ -26,7 +26,7 @@ export const teamMembers = [
   {
     id: "card-4",
     name: "Rohan",
-    img: "/team-cards/team-member-4.jpg",
+    img: "/team-cards/team-member-4.webp",
     alt: "Rohan",
     description:
       "React Developer. Builds dynamic, high-performance user interfaces and interactive web applications. Expert in modern React patterns and state management.",
@@ -34,7 +34,7 @@ export const teamMembers = [
   {
     id: "card-5",
     name: "Pratham",
-    img: "/team-cards/team-member-5.jpg",
+    img: "/team-cards/team-member-5.webp",
     alt: "Pratham",
     description:
       "Frontend Developer and UI Designer. Creates beautiful, responsive interfaces that combine aesthetic design with seamless user experiences.",
@@ -42,7 +42,7 @@ export const teamMembers = [
   {
     id: "card-6",
     name: "Shreyash",
-    img: "/team-cards/team-member-1.jpg",
+    img: "/team-cards/team-member-1.webp",
     alt: "Shreyash",
     description:
       "Backend Developer. Architects robust server-side systems, APIs, and databases. Ensures scalability, security, and performance for all our applications.",

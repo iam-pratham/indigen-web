@@ -14,7 +14,7 @@
   width: max-content;
   transform: translateY(0.1rem);
   color: #e5e7eb;
-  font-family: "PP Pangram Sans";
+  font-family: var(--font-pp-pangram-sans), sans-serif;
   font-size: 1rem;
   font-weight: 900;
   -webkit-font-smoothing: antialiased;
@@ -75,6 +75,7 @@
   0% {
     transform: rotateY(0deg);
   }
+
   100% {
     transform: rotateY(720deg);
   }
@@ -84,6 +85,7 @@
   0% {
     transform: rotateY(720deg);
   }
+
   100% {
     transform: rotateY(0deg);
   }

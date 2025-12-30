@@ -271,7 +271,7 @@ export default function StorySlides() {
     <div className="stories-container stories" ref={storiesContainerRef}>
       <div className="story-img">
         <div className="img">
-          <img src="/stories/story-1.jpg" alt="" />
+          <img src="/stories/story-1.webp" alt="" />
         </div>
       </div>
 
@@ -294,7 +294,7 @@ export default function StorySlides() {
 
           <div className="profile">
             <div className="profile-icon">
-              <img src="/stories/profile-1.png" alt="" />
+              <img src="/stories/profile-1.webp" alt="" />
             </div>
 
             <div className="profile-name">

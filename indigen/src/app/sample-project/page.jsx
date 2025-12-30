@@ -15,7 +15,7 @@ const Page = () => {
 
       <section className="project-banner-img">
         <div className="project-banner-img-wrapper">
-          <img src="/project/sample-project-1.jpg" alt="" />
+          <img src="/project/sample-project-1.webp" alt="" />
         </div>
       </section>
 
@@ -56,31 +56,31 @@ const Page = () => {
         <div className="project-images-container">
           <div className="project-img">
             <div className="project-img-wrapper">
-              <img src="/project/sample-project-2.jpg" alt="" />
+              <img src="/project/sample-project-2.webp" alt="" loading="lazy" />
             </div>
           </div>
 
           <div className="project-img">
             <div className="project-img-wrapper">
-              <img src="/project/sample-project-3.jpg" alt="" />
+              <img src="/project/sample-project-3.webp" alt="" loading="lazy" />
             </div>
           </div>
 
           <div className="project-img">
             <div className="project-img-wrapper">
-              <img src="/project/sample-project-4.jpg" alt="" />
+              <img src="/project/sample-project-4.webp" alt="" loading="lazy" />
             </div>
           </div>
 
           <div className="project-img">
             <div className="project-img-wrapper">
-              <img src="/project/sample-project-5.jpg" alt="" />
+              <img src="/project/sample-project-5.webp" alt="" loading="lazy" />
             </div>
           </div>
 
           <div className="project-img">
             <div className="project-img-wrapper">
-              <img src="/project/sample-project-6.jpg" alt="" />
+              <img src="/project/sample-project-6.webp" alt="" loading="lazy" />
             </div>
           </div>
         </div>
@@ -123,7 +123,7 @@ const Page = () => {
 
         <div className="next-project-img">
           <div className="next-project-img-wrapper">
-            <img src="/project/next-project.jpg" alt="" />
+            <img src="/project/next-project.webp" alt="" loading="lazy" />
           </div>
         </div>
 

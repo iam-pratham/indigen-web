@@ -1,246 +1,104 @@
 "use client";
 import "./work.css";
-import { useRef, useMemo } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useViewTransition } from "@/hooks/useViewTransition";
+import Button from "@/components/Button/Button";
+import Copy from "@/components/Copy/Copy";
 
-gsap.registerPlugin(useGSAP);
+import { projects } from "@/data/projects";
 
-const Page = () => {
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+
+const WorkPage = () => {
+  const containerRef = useRef(null);
   const { navigateWithTransition } = useViewTransition();
-  const workPageContainer = useRef(null);
-
-  const workItems = useMemo(
-    () => [
-      {
-        index: "01",
-        name: "Shabari Naturals Government Initiative",
-        href: "/sample-project",
-        variant: "variant-1",
-        images: [
-          "/work/work_1_1.png",
-          "/work/work_1_2.png",
-          "/work/work_1_3.png",
-        ],
-      },
-      {
-        index: "02",
-        name: "BTwardrobe Clothing Store",
-        href: "/sample-project",
-        variant: "variant-2",
-        images: [
-          "/work/work_2_1.png",
-          "/work/work_2_2.png",
-          "/work/work_2_3.png",
-        ],
-      },
-      {
-        index: "03",
-        name: "Volter Beauty Store",
-        href: "/sample-project",
-        variant: "variant-2",
-        images: [
-          "/work/work_3_1.png",
-          "/work/work_3_2.png",
-          "/work/work_3_3.png",
-        ],
-      },
-      {
-        index: "04",
-        name: "Secret Girl Clothing Store",
-        href: "/sample-project",
-        variant: "variant-3",
-        images: [
-          "/work/work_4_1.png",
-          "/work/work_4_2.png",
-          "/work/work_4_3.png",
-        ],
-      },
-      {
-        index: "05",
-        name: "Okist Cookies Store",
-        href: "/sample-project",
-        variant: "variant-1",
-        images: [
-          "/work/work_5_1.png",
-          "/work/work_5_2.png",
-          "/work/work_5_3.png",
-        ],
-      },
-      {
-        index: "06",
-        name: "Tulips Skin Care Store",
-        href: "/sample-project",
-        variant: "variant-2",
-        images: [
-          "/work/work_6_1.png",
-          "/work/work_6_2.png",
-          "/work/work_6_3.png",
-        ],
-      },
-    ],
-    []
-  );
 
   useGSAP(
     () => {
-      const q = gsap.utils.selector(workPageContainer);
-      const folderLinks = q("a");
-      const folders = q(".folder");
-      const folderWrappers = q(".folder-wrapper");
-
-      let isMobile = window.innerWidth < 1000;
-
-      const setInitialPositions = () => {
-        gsap.set(folderWrappers, { y: isMobile ? 0 : 25 });
-      };
-
-      const mouseEnterHandlers = new Map();
-      const mouseLeaveHandlers = new Map();
-
-      folders.forEach((folder, index) => {
-        const folderLink = folderLinks[index];
-        const previewImages = folder.querySelectorAll(".folder-preview-img");
-
-        const onEnter = () => {
-          if (isMobile) return;
-
-          folders.forEach((siblingFolder) => {
-            if (siblingFolder !== folder) {
-              siblingFolder.classList.add("disabled");
-            }
-          });
-
-          gsap.to(folderWrappers[index], {
-            y: 0,
-            duration: 0.25,
-            ease: "back.out(1.7)",
-          });
-
-          previewImages.forEach((img, imgIndex) => {
-            let rotation;
-            if (imgIndex === 0) {
-              rotation = gsap.utils.random(-20, -10);
-            } else if (imgIndex === 1) {
-              rotation = gsap.utils.random(-10, 10);
-            } else {
-              rotation = gsap.utils.random(10, 20);
-            }
-
-            gsap.to(img, {
-              y: "-100%",
-              rotation,
-              duration: 0.25,
-              ease: "back.out(1.7)",
-              delay: imgIndex * 0.025,
-            });
-          });
-        };
-
-        const onLeave = () => {
-          if (isMobile) return;
-
-          folders.forEach((siblingFolder) => {
-            siblingFolder.classList.remove("disabled");
-          });
-
-          gsap.to(folderWrappers[index], {
-            y: 25,
-            duration: 0.25,
-            ease: "back.out(1.7)",
-          });
-
-          previewImages.forEach((img, imgIndex) => {
-            gsap.to(img, {
-              y: "0%",
-              rotation: 0,
-              duration: 0.25,
-              ease: "back.out(1.7)",
-              delay: imgIndex * 0.05,
-            });
-          });
-        };
-
-        if (folderLink) {
-          mouseEnterHandlers.set(folderLink, onEnter);
-          mouseLeaveHandlers.set(folderLink, onLeave);
-          folderLink.addEventListener("mouseenter", onEnter);
-          folderLink.addEventListener("mouseleave", onLeave);
-        }
-      });
-
-      const handleResize = () => {
-        const currentBreakpoint = window.innerWidth < 1000;
-        if (currentBreakpoint !== isMobile) {
-          isMobile = currentBreakpoint;
-          setInitialPositions();
-
-          folders.forEach((folder) => {
-            folder.classList.remove("disabled");
-          });
-          const allPreviewImages = q(".folder-preview-img");
-          gsap.set(allPreviewImages, { y: "0%", rotation: 0 });
-        }
-      };
-
-      window.addEventListener("resize", handleResize);
-      setInitialPositions();
-
-      return () => {
-        window.removeEventListener("resize", handleResize);
-        folderLinks.forEach((link) => {
-          const onEnter = mouseEnterHandlers.get(link);
-          const onLeave = mouseLeaveHandlers.get(link);
-          if (onEnter) link.removeEventListener("mouseenter", onEnter);
-          if (onLeave) link.removeEventListener("mouseleave", onLeave);
+      // Project Items Animation
+      const projects = gsap.utils.toArray(".project-item");
+      projects.forEach((project) => {
+        gsap.from(project, {
+          y: 100,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: project,
+            start: "top 85%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
         });
-      };
+      });
     },
-    { scope: workPageContainer }
+    { scope: containerRef }
   );
 
   return (
-    <>
-      <section className="folders" ref={workPageContainer}>
-        {[0, 1, 2].map((rowIndex) => (
-          <div className="row" key={`row-${rowIndex}`}>
-            {workItems.slice(rowIndex * 2, rowIndex * 2 + 2).map((item) => (
-              <a
-                key={item.index}
-                href={item.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  navigateWithTransition(item.href);
-                }}
-              >
-                <div className={`folder ${item.variant}`}>
-                  <div className="folder-preview">
-                    {item.images.map((src, i) => (
-                      <div
-                        className="folder-preview-img"
-                        key={`${item.index}-img-${i}`}
-                      >
-                        <img src={src} alt={`Preview ${i + 1}`} />
-                      </div>
-                    ))}
-                  </div>
-                  <div className="folder-wrapper">
-                    <div className="folder-index">
-                      <p>{item.index}</p>
-                    </div>
-                    <div className="folder-name">
-                      <h1>{item.name}</h1>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            ))}
+    <div className="work-page" ref={containerRef}>
+      <div className="work-container">
+        <div className="work-copy">
+          <div className="work-col">
+            <Copy delay={0.1}>
+              <h1>Selected Work</h1>
+            </Copy>
           </div>
-        ))}
-      </section>
-    </>
+
+        </div>
+
+        <ul className="project-list">
+          {projects.map((project, index) => (
+            <li key={index} className="project-item">
+              <div className="project-info">
+                <div className="project-index">
+                  <span>{project.index} / {projects.length.toString().padStart(2, '0')}</span>
+                </div>
+                <div className="project-title">
+                  <h2>{project.name}</h2>
+                </div>
+                <div className="project-tags">
+                  {project.category.map((cat, i) => (
+                    <span key={i} className="project-tag">
+                      {cat}
+                    </span>
+                  ))}
+                </div>
+                <div className="project-button">
+                  <Button
+                    variant="light"
+                    href={`/work/${project.slug}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigateWithTransition(`/work/${project.slug}`);
+                    }}
+                  >
+                    View Project
+                  </Button>
+                </div>
+              </div>
+
+              <div
+                className="project-image-container"
+                onClick={() => navigateWithTransition(`/work/${project.slug}`)}
+              >
+                <div className="project-overlay"></div>
+                <img
+                  src={project.image}
+                  alt={`${project.name} Preview`}
+                  className="project-image"
+                  loading="lazy"
+                />
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
   );
 };
 
-export default Page;
+export default WorkPage;

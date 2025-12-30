@@ -22,11 +22,15 @@ const Page = () => {
 
     const config = {
       speed: 3,
-      imageCount: 10,
       size: window.innerWidth < 1000 ? 150 : 300,
       changeDirectionDelay: 20,
       edgeOffset: -40,
     };
+
+    const imagePaths = [
+      "/objects/obj-0.webp",
+      ...Array.from({ length: 9 }, (_, i) => `/objects/obj-${i + 2}.webp`),
+    ];
 
     let screensaverElement = null;
 
@@ -35,17 +39,24 @@ const Page = () => {
       return new Promise((resolve) => {
         let loadedCount = 0;
 
-        for (let i = 1; i <= config.imageCount; i++) {
+        imagePaths.forEach((path) => {
           const img = new Image();
           img.onload = () => {
             loadedCount++;
-            if (loadedCount === config.imageCount) {
+            if (loadedCount === imagePaths.length) {
               resolve();
             }
           };
-          img.src = `/objects/obj-${i}.png`;
+          img.onerror = () => {
+            // Handle error or just proceed if one fails to avoid blocking
+            loadedCount++;
+            if (loadedCount === imagePaths.length) {
+              resolve();
+            }
+          }
+          img.src = path;
           preloadedImages.push(img);
-        }
+        });
       });
     };
 
@@ -98,17 +109,17 @@ const Page = () => {
       let velX = (Math.random() > 0.5 ? 1 : -1) * config.speed;
       let velY = (Math.random() > 0.5 ? 1 : -1) * config.speed;
 
-      let currentImageIndex = 1;
+      let currentImageIndex = 0;
 
       screensaverElement.style.width = `${config.size}px`;
       screensaverElement.style.height = `${config.size}px`;
-      screensaverElement.style.backgroundImage = `url(/objects/obj-${currentImageIndex}.png)`;
+      screensaverElement.style.backgroundImage = `url(${imagePaths[currentImageIndex]})`;
       screensaverElement.style.left = `${posX}px`;
       screensaverElement.style.top = `${posY}px`;
 
       const changeImage = () => {
-        currentImageIndex = (currentImageIndex % config.imageCount) + 1;
-        screensaverElement.style.backgroundImage = `url(/objects/obj-${currentImageIndex}.png)`;
+        currentImageIndex = (currentImageIndex + 1) % imagePaths.length;
+        screensaverElement.style.backgroundImage = `url(${imagePaths[currentImageIndex]})`;
       };
 
       let canChangeDirection = true;

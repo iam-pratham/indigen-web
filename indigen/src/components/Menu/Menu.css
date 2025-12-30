@@ -18,7 +18,7 @@ nav .nav-logo a {
 }
 
 .nav-logo-text {
-  font-family: "Big Shoulders Display", sans-serif;
+  font-family: var(--font-big-shoulders-display), sans-serif;
   font-size: 2rem;
   font-weight: 900;
   letter-spacing: -0.05rem;
@@ -77,7 +77,7 @@ nav .close-label {
 .menu-overlay .menu-content p,
 .menu-overlay .menu-content a {
   text-transform: uppercase;
-  font-family: "PP Neue Montreal";
+  font-family: var(--font-pp-neue-montreal), sans-serif;
   font-size: 0.85rem;
   font-weight: 500;
   display: inline-block;
@@ -158,7 +158,7 @@ nav .close-label {
   color: #e5e7eb;
   text-transform: uppercase;
   text-decoration: none;
-  font-family: "Big Shoulders Display", sans-serif;
+  font-family: var(--font-big-shoulders-display), sans-serif;
   font-size: 10rem;
   font-weight: 900;
   line-height: 0.9;
@@ -212,7 +212,7 @@ nav .open-label,
 nav .close-label {
   position: relative;
   text-transform: uppercase;
-  font-family: "PP Pangram Sans";
+  font-family: var(--font-pp-pangram-sans), sans-serif;
   font-size: 0.9rem;
   font-weight: 900;
   -webkit-font-smoothing: antialiased;
@@ -233,6 +233,7 @@ nav .close-label {
 }
 
 @media (max-width: 1000px) {
+
   nav,
   .menu-overlay .menu-links-wrapper {
     padding: 1.25rem;

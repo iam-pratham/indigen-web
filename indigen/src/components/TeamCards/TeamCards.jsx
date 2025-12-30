@@ -213,7 +213,7 @@ export default function TeamCards() {
             ref={(el) => (cardsRef.current[idx] = el)}
           >
             <div className="card-img">
-              <img src={m.img} alt={m.alt} />
+              <img src={m.img} alt={m.alt} loading="lazy" />
             </div>
             <div className="card-content">
               <div className="card-title">
@@ -235,7 +235,7 @@ export default function TeamCards() {
         {teamMembers.map((m) => (
           <div className="card" id={m.id} key={`m-${m.id}`}>
             <div className="card-img">
-              <img src={m.img} alt={m.alt} />
+              <img src={m.img} alt={m.alt} loading="lazy" />
             </div>
             <div className="card-content">
               <div className="card-title">

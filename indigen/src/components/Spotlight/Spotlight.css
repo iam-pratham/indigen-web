@@ -58,7 +58,7 @@
 
 .spotlight .marquee-img-item h1 {
   text-transform: uppercase;
-  font-family: "Big Shoulders Display", sans-serif;
+  font-family: var(--font-big-shoulders-display), sans-serif;
   font-weight: 900;
   font-size: 4.25rem;
   line-height: 0.9;

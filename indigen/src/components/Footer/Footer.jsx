@@ -24,11 +24,10 @@ const Footer = () => {
     resetDelay: 500,
   };
 
-  const imageParticleCount = 10;
-  const imagePaths = Array.from(
-    { length: imageParticleCount },
-    (_, i) => `/objects/obj-${i + 1}.png`
-  );
+  const imagePaths = [
+    "/objects/obj-0.webp",
+    ...Array.from({ length: 9 }, (_, i) => `/objects/obj-${i + 2}.webp`),
+  ];
 
   useEffect(() => {
     const updateTorontoTime = () => {

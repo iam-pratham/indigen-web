@@ -43,7 +43,7 @@
 }
 
 .privacy .privacy-copy .privacy-col h1 {
-  font-family: "Big Shoulders Display", sans-serif;
+  font-family: var(--font-big-shoulders-display), sans-serif;
   font-size: 9rem;
   font-weight: 900;
   line-height: 1.1;
@@ -60,7 +60,7 @@
 }
 
 .privacy .privacy-content h2 {
-  font-family: "Big Shoulders Display", sans-serif;
+  font-family: var(--font-big-shoulders-display), sans-serif;
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.2;
@@ -76,7 +76,7 @@
 }
 
 .privacy .privacy-content p {
-  font-family: "PP Neue Montreal";
+  font-family: var(--font-pp-neue-montreal);
   font-size: 1.125rem;
   line-height: 1.8;
   color: #d1d5db;
@@ -96,7 +96,7 @@
 }
 
 .privacy .privacy-content ul li {
-  font-family: "Geist Mono";
+  font-family: var(--font-geist-mono);
   font-size: 1.125rem;
   line-height: 1.8;
   color: #d1d5db;
