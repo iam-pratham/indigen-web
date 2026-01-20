@@ -47,6 +47,16 @@
   padding: 2rem;
 }
 
+@media (max-width: 1000px) {
+  /* Removed previous definition of .hero .container .hero-footer-outer */
+
+  .hero .container .hero-footer-outer div {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
 .hero .container .hero-footer-outer div {
   display: flex;
   justify-content: space-between;
@@ -120,26 +130,114 @@
   width: 3rem;
 }
 
-.client-reviews-header-container
-  .client-reviews-header-content
-  .client-reviews-header-copy {
+.client-reviews-header-container .client-reviews-header-content .client-reviews-header-copy {
   width: 70%;
 }
 
-.client-reviews-header-container
-  .client-reviews-header-content
-  .client-reviews-header-copy p.lg {
+.client-reviews-header-container .client-reviews-header-content .client-reviews-header-copy p.lg {
   font-size: 1.25rem;
   line-height: 1.4;
   text-align: center;
 }
 
 @media (max-width: 1000px) {
-  .hero .container .hero-content-main,
-  .hero .container .hero-content-main .hero-footer {
-    width: 100%;
+
+  .hero {
+    height: 100svh;
+    min-height: 100svh;
+    overflow: hidden;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero .container {
+    height: 100%;
+    padding: 0;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 2rem;
+  }
+
+  .hero .container .hero-content-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0;
+    padding: 6rem 1rem 5.5rem 1rem;
+    /* Reduced top padding from 6rem to 4rem */
+    height: 100%;
+    width: 100%;
+  }
+
+  .hero .container .hero-content-main .hero-header {
+    order: 1;
+    width: 100%;
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+    /* Reduced top margin from 1rem to 0.5rem */
+    flex-shrink: 0;
+  }
+
+  .hero .container .hero-content-main .hero-header h1 {
+    font-size: 2.5rem;
+    line-height: 0.95;
+    margin-bottom: 0;
+  }
+
+  /* SVG Container - Centered with flex */
+  .hero .container .hero-content-main> :nth-child(2) {
+    order: 2;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    padding: 2rem 0;
+  }
+
+  /* Description & CTA */
+  .hero .container .hero-content-main .hero-footer {
+    order: 3;
+    width: 100%;
+    gap: 1.25rem;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0 0.5rem;
+  }
+
+  .hero .container .hero-content-main .hero-footer p.lg {
+    font-size: 0.875rem;
+    line-height: 1.4;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  /* Copyright / Location Strip */
+  .hero .container .hero-footer-outer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    margin: 0;
+  }
+
+  .hero .container .hero-footer-outer div {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 0.75rem;
+    flex-wrap: nowrap;
+  }
+
+  .hero .container .hero-footer-outer div p {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    white-space: nowrap;
   }
 
   .featured-work .featured-work-header,
@@ -147,9 +245,7 @@
   .featured-work .featured-work-header-content .featured-work-header-copy,
   .client-reviews-header-container .client-reviews-header,
   .client-reviews-header-container .client-reviews-header-content,
-  .client-reviews-header-container
-    .client-reviews-header-content
-    .client-reviews-header-copy {
+  .client-reviews-header-container .client-reviews-header-content .client-reviews-header-copy {
     width: 100%;
   }
 
@@ -160,10 +256,5 @@
   .featured-work-list .row {
     width: 100% !important;
     flex-direction: column;
-  }
-
-  .hero .container .hero-content-main .hero-footer p.lg {
-    font-size: 1rem;
-    line-height: 1.4;
   }
 }

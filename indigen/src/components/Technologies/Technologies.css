@@ -140,9 +140,17 @@
 
     .tech-marquee {
         gap: 2rem;
+        padding-top: 0px;
+        padding-bottom: 3rem;
     }
 
     .tech-icon {
         font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tech-section {
+        padding: 4rem 0 2rem 0 !important;
     }
 }

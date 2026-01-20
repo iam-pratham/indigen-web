@@ -277,36 +277,165 @@
 }
 
 
-/* Responsive */
+
+/* Mobile Responsive Fixes */
 @media (max-width: 1024px) {
-  .testimonial-text {
-    font-size: 1.75rem;
+  .testimonials-section {
+    padding: 3rem 0;
+  }
+
+  .testimonials-header {
+    padding-bottom: 2rem;
   }
 
   .testimonials-title {
-    font-size: 5rem;
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .testimonial-display {
+    height: 550px;
+  }
+
+  .testimonial-text {
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
+
+  /* Target correct JSX classes */
+  .client-name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-family: var(--font-big-shoulders-display), sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+    margin: 0;
+  }
+
+  .client-role {
+    font-size: 0.8rem;
+    font-family: var(--font-geist-mono), monospace;
+    color: var(--base-500);
+    text-transform: uppercase;
+    margin: 0;
   }
 }
 
 @media (max-width: 768px) {
-  .testimonial-text {
-    font-size: 1.35rem;
-    /* Readable mobile size */
+  .testimonials-section {
+    padding: 0 0 1rem 0;
+    /* Ultra tight padding */
+  }
+
+  .testimonials-header {
+    margin-bottom: 0.5rem;
+    /* Ultra tight header */
   }
 
   .testimonials-title {
     font-size: 3.5rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .testimonials-subtitle {
+    padding: 0 1.5rem;
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+
+  .testimonial-display {
+    min-height: 350px;
+    padding-bottom: 0;
+  }
+
+  .testimonial-content {
+    padding: 0 1rem;
+    width: 100%;
+    gap: 0.75rem;
+    /* Minimum effective gap */
+  }
+
+  .testimonial-glass-panel {
+    padding: 0;
+    width: 100%;
+  }
+
+  .testimonial-text {
+    font-size: 1.15rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    /* Tight spacing */
+  }
+
+  .quote-watermark {
+    font-size: 6rem;
+    opacity: 0.1;
+    top: -1rem;
+    left: -0.5rem;
+  }
+
+  .client-name {
+    font-size: 1.35rem;
+  }
+
+  .client-role {
+    font-size: 0.8rem;
+  }
+
+  /* Buttons - Pill Shape (Desktop Style - Transparent) */
+  .nav-btn {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 4rem;
+    height: 2.25rem;
+    font-size: 0.85rem;
+    border-radius: 100px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0;
+    margin: 0;
+  }
+
+  .nav-btn:active {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(0.95);
   }
 
   .testimonial-nav {
-    gap: 1rem;
+    display: flex;
+    justify-content: space-between;
+    /* Push buttons to edges if needed, or center with gap */
+    align-items: center;
+    margin-top: 0.75rem;
+    width: 100%;
+    gap: 0.5rem;
+    /* Reduced gap to fit wider buttons */
+    padding: 0 0.5rem;
+  }
+
+  .nav-dots {
+    gap: 0.35rem;
+    /* Tighter dots to save space */
+    display: flex;
+    flex: 1;
+    /* Allow dots to take available space */
+    justify-content: center;
   }
 
   .nav-dot {
-    width: 2rem;
+    width: 1.5rem;
+    height: 2px;
   }
 
   .nav-dot.active {
-    width: 3rem;
+    width: 2rem;
   }
 }

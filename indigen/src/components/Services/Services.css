@@ -226,3 +226,167 @@ canvas.box {
     /* offset-path is set in JS logic */
     filter: drop-shadow(0 0 10px #70FF4D);
 }
+/* Mobile Responsive Styles */
+@media (max-width: 1024px) {
+    .title {
+        font-size: 3rem;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+    }
+
+    .services-desc {
+        font-size: 1rem;
+        padding: 0 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .services-main {
+        height: auto;
+        padding: 2rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .services-trail-svg {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: visible;
+    }
+
+    .trail-path {
+        stroke: var(--base-500);
+        stroke-width: 2;
+        stroke-linecap: round;
+        filter: drop-shadow(0 0 6px rgba(112, 255, 77, 0.6));
+    }
+
+    .trail-path-bg {
+        stroke: var(--base-500);
+        stroke-width: 2;
+        opacity: 0.15;
+    }
+
+    .trail-head {
+        filter: drop-shadow(0 0 8px #70FF4D);
+    }
+
+    .service-container {
+        position: relative;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: 100%;
+        max-width: 260px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        border: none;
+        padding: 0;
+        margin: 0;
+        z-index: 1;
+    }
+
+    .marker {
+        width: 180px;
+        height: 180px;
+        margin: 0;
+    }
+
+    canvas.box {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .service-label {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        gap: 0.5rem;
+    }
+
+    .initial .service-label,
+    .second .service-label,
+    .third .service-label,
+    .fourth .service-label,
+    .fifth .service-label,
+    .sixth .service-label {
+        position: relative;
+        top: auto;
+        left: auto;
+        right: auto;
+        transform: none;
+        text-align: center;
+        align-items: center;
+    }
+
+    .service-title {
+        font-size: 1.75rem;
+        line-height: 1.1;
+        margin-bottom: 0.25rem;
+    }
+
+    .service-desc {
+        font-size: 0.9rem;
+        max-width: 260px;
+        line-height: 1.4;
+        margin: 0;
+    }
+
+    .services-spacer {
+        min-height: 6vh;
+        padding: 1rem 0;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .services-desc {
+        font-size: 0.95rem;
+        padding: 0 1rem;
+    }
+
+    .service-title {
+        font-size: 1.6rem;
+    }
+
+    .service-desc {
+        font-size: 0.85rem;
+    }
+
+    .marker {
+        width: 160px;
+        height: 160px;
+    }
+
+    .service-container {
+        max-width: 240px;
+        gap: 0.75rem;
+    }
+
+    .services-main {
+        gap: 1.5rem;
+    }
+}

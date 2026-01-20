@@ -79,17 +79,59 @@
   .cta .cta-copy {
     width: 100%;
     flex-direction: column;
+    padding: 3rem 0 4rem 0;
+  }
+
+  .cta .cta-copy .cta-col {
+    padding: 0 2rem;
+  }
+
+  /* Center Why Choose Indigen */
+  .cta .why-choose {
+    text-align: center;
+    width: 100%;
+    display: block;
   }
 
   .cta .cta-card {
-    width: 100%;
+    width: 90%;
   }
 
   .cta .cta-card .cta-card-copy {
     flex-direction: column;
   }
 
+  /* Center Our Approach (Header and Paragraphs) */
+  .cta .cta-card .cta-card-copy .cta-card-col h3 {
+    text-align: center;
+    width: 100%;
+  }
+
+  .cta .cta-card .cta-card-copy .cta-card-col:nth-child(2) p {
+    text-align: center;
+    text-align-last: center;
+    /* Ensure even last line is centered if needed */
+  }
+
+  /* Center Button container in Card */
+  .cta .cta-card .cta-card-copy .cta-card-col:nth-child(2) {
+    align-items: center;
+  }
+
   .cta .container {
-    gap: 2rem;
+    gap: 4rem;
+    padding-bottom: 6rem;
+  }
+
+  .cta .cta-copy .cta-col:nth-child(2) p.lg {
+    max-width: 100%;
+    text-align: center !important;
+    /* Forced centering */
+    font-size: 1.15rem;
+  }
+
+  /* Center Buttons in main copy if necessary */
+  .cta .cta-copy .cta-col:nth-child(2) {
+    align-items: center;
   }
 }

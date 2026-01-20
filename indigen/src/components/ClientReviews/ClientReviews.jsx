@@ -105,7 +105,7 @@ const ClientReviews = () => {
           {/* Navigation Buttons placed nicely around */}
           <div className="testimonial-nav">
             <button onClick={handlePrev} className="nav-btn prev" aria-label="Previous">
-              Prev
+              <FaArrowLeft />
             </button>
 
             {/* Progress Indicators */}
@@ -120,7 +120,7 @@ const ClientReviews = () => {
             </div>
 
             <button onClick={handleNext} className="nav-btn next" aria-label="Next">
-              Next
+              <FaArrowRight />
             </button>
           </div>
         </div>
