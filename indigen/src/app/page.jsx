@@ -1,19 +1,25 @@
 "use client";
 import "./home.css";
 import Button from "@/components/Button/Button";
-import Showreel from "@/components/Showreel/Showreel";
-import FeaturedWork from "@/components/FeaturedWork/FeaturedWork";
+import Stats from "@/components/Stats/Stats";
+
+import Services from "@/components/Services/Services";
+import Sectors from "@/components/Sectors/Sectors";
+import Technologies from "@/components/Technologies/Technologies";
 import ClientReviews from "@/components/ClientReviews/ClientReviews";
-import Spotlight from "@/components/Spotlight/Spotlight";
+
 import CTACard from "@/components/CTACard/CTACard";
 import Footer from "@/components/Footer/Footer";
 import Copy from "@/components/Copy/Copy";
+
+import SVGLineDraw from "@/components/SVGLineDraw/SVGLineDraw";
 import Preloader, { isInitialLoad } from "@/components/Preloader/Preloader";
 import React, { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const Page = () => {
   useEffect(() => {
@@ -30,6 +36,25 @@ const Page = () => {
     };
   }, []);
 
+  useGSAP(() => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    tl.from(".hero .hero-header h1", {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+    })
+      .from(
+        ".hero .hero-footer p.lg",
+        { y: 30, opacity: 0, duration: 0.6 },
+        "-=0.4"
+      )
+      .from(
+        ".hero .hero-footer .btn",
+        { y: 20, opacity: 0, duration: 0.4 },
+        "-=0.3"
+      );
+  }, []);
+
   return (
     <>
       <Preloader />
@@ -37,28 +62,32 @@ const Page = () => {
         <div className="container">
           <div className="hero-content-main">
             <div className="hero-header">
-              <Copy animateOnScroll={false} delay={isInitialLoad ? 5.75 : 0.75}>
+              <Copy animateOnScroll={false} delay={isInitialLoad ? 1.9 : 0.5}>
                 <h1>Make Businesses Smarter, Faster, and Future-Ready</h1>
               </Copy>
             </div>
 
+            <SVGLineDraw />
+
+
+
             <div className="hero-footer-outer">
-              <Copy animateOnScroll={false} delay={isInitialLoad ? 6.35 : 1.65}>
+              <Copy animateOnScroll={false} delay={isInitialLoad ? 2.1 : 1.4}>
                 <p className="sm">&copy; Indigen Services</p>
                 <p className="sm">Nashik, Maharashtra</p>
               </Copy>
             </div>
 
             <div className="hero-footer">
-              <Copy animateOnScroll={false} delay={isInitialLoad ? 6.05 : 1.15}>
+              <Copy animateOnScroll={false} delay={isInitialLoad ? 2.0 : 0.8}>
                 <p className="lg">
-                  We build intelligent digital products, scalable SaaS applications, 
-                  advanced automation systems, and AI-powered business tools that 
+                  We build intelligent digital products, scalable SaaS applications,
+                  advanced automation systems, and AI-powered business tools that
                   reduce manual work and accelerate growth.
                 </p>
               </Copy>
 
-              <Button delay={isInitialLoad ? 6.35 : 1.55} href="/studio">
+              <Button delay={isInitialLoad ? 2.1 : 1.55} href="/studio">
                 Visit shopify theme store
               </Button>
             </div>
@@ -66,106 +95,17 @@ const Page = () => {
         </div>
       </section>
 
-      <Showreel />
+      <Stats />
 
-      <section className="featured-work">
-        <div className="container">
-          <div className="featured-work-header-content">
-            <div className="featured-work-header">
-              <Copy animateOnScroll={true} delay={0.25}>
-                <h1>Our Portfolio</h1>
-              </Copy>
-            </div>
+      <Services />
 
-            <div className="arrow">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                viewBox="0 0 32 32"
-                fill="none"
-                className="icon"
-              >
-                <path
-                  d="M16 26.6665L16 5.33317"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <path
-                  d="M22.6667 19.9999L16 26.6665L9.33337 19.9998"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-              </svg>
-            </div>
+      <Sectors />
 
-            <div className="featured-work-header-copy">
-              <Copy animateOnScroll={true} delay={0.25}>
-                <p className="lg">
-                  From AI-powered chatbots to complete SaaS platforms, explore 
-                  our top-grade projects that showcase our expertise in AI, 
-                  SaaS development, and full-stack innovation.
-                </p>
-              </Copy>
-            </div>
-          </div>
+      <Technologies />
 
-          <FeaturedWork />
-        </div>
-      </section>
 
-      <section className="client-reviews-header-container">
-        <div className="container">
-          <div className="client-reviews-header-content">
-            <div className="client-reviews-header">
-              <Copy animateOnScroll={true} delay={0.25}>
-                <h1>Client Success Stories</h1>
-              </Copy>
-            </div>
-
-            <div className="arrow">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                viewBox="0 0 32 32"
-                fill="none"
-                className="icon"
-              >
-                <path
-                  d="M16 26.6665L16 5.33317"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <path
-                  d="M22.6667 19.9999L16 26.6665L9.33337 19.9998"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-              </svg>
-            </div>
-
-            <div className="client-reviews-header-copy">
-              <Copy animateOnScroll={true} delay={0.25}>
-                <p className="lg">
-                  Real results from businesses that transformed their operations 
-                  with our AI solutions, SaaS platforms, and automation systems.
-                </p>
-              </Copy>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <ClientReviews />
-
-      <Spotlight />
 
       <CTACard />
 

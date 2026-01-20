@@ -66,9 +66,8 @@ export default function Copy({ children, animateOnScroll = true, delay = 0 }) {
 
           const split = SplitText.create(element, {
             type: splitType,
-            mask: splitType,
-            linesClass: "line++",
-            wordsClass: "word++",
+            linesClass: "line",
+            wordsClass: "word",
             lineThreshold: 0.1,
           });
 
@@ -91,13 +90,15 @@ export default function Copy({ children, animateOnScroll = true, delay = 0 }) {
           }
         });
 
-        gsap.set(lines.current, { y: "100%" });
+        gsap.set(lines.current, { y: "100%", autoAlpha: 0 });
+        gsap.set(containerRef.current, { autoAlpha: 1 });
 
         const animationProps = {
           y: "0%",
-          duration: 1,
+          autoAlpha: 1,
+          duration: 1.2,
           stagger: 0.1,
-          ease: "power4.out",
+          ease: "power3.out",
           delay: delay,
         };
 
@@ -129,11 +130,15 @@ export default function Copy({ children, animateOnScroll = true, delay = 0 }) {
   );
 
   if (React.Children.count(children) === 1) {
-    return React.cloneElement(children, { ref: containerRef });
+    const child = React.Children.only(children);
+    return React.cloneElement(child, {
+      ref: containerRef,
+      style: { ...child.props.style, visibility: "hidden" },
+    });
   }
 
   return (
-    <div ref={containerRef} data-copy-wrapper="true">
+    <div ref={containerRef} data-copy-wrapper="true" style={{ visibility: "hidden" }}>
       {children}
     </div>
   );

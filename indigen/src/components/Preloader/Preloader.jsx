@@ -2,20 +2,16 @@
 import "./Preloader.css";
 import React, { useRef, useState, useEffect } from "react";
 import gsap from "gsap";
-import { SplitText } from "gsap/SplitText";
-import CustomEase from "gsap/CustomEase";
 import { useGSAP } from "@gsap/react";
 import { useLenis } from "lenis/react";
 
-gsap.registerPlugin(useGSAP, SplitText, CustomEase);
-CustomEase.create("hop", "0.9, 0, 0.1, 1");
+gsap.registerPlugin(useGSAP);
 
 export let isInitialLoad = true;
 
 const Preloader = () => {
-  const preloaderRef = useRef(null);
+  const overlayRef = useRef(null);
   const [showPreloader, setShowPreloader] = useState(isInitialLoad);
-  const [loaderAnimating, setLoaderAnimating] = useState(false);
   const lenis = useLenis();
 
   useEffect(() => {
@@ -26,185 +22,135 @@ const Preloader = () => {
 
   useEffect(() => {
     if (lenis) {
-      if (loaderAnimating) {
+      if (showPreloader) {
         lenis.stop();
       } else {
         lenis.start();
       }
     }
-  }, [lenis, loaderAnimating]);
+  }, [lenis, showPreloader]);
 
   useGSAP(
     () => {
       if (!showPreloader) return;
-      setLoaderAnimating(true);
 
-      const waitForFonts = async () => {
-        try {
-          await document.fonts.ready;
-          const customFonts = ["Big Shoulders Display"];
-          const fontCheckPromises = customFonts.map((fontFamily) => {
-            return document.fonts.check(`16px ${fontFamily}`);
-          });
-          await Promise.all(fontCheckPromises);
-          await new Promise((resolve) => setTimeout(resolve, 100));
-          return true;
-        } catch (error) {
-          await new Promise((resolve) => setTimeout(resolve, 200));
-          return true;
+      const overlay = overlayRef.current;
+      const paths = overlay.querySelectorAll(".shape-overlays__path");
+
+      const numPoints = 10;
+      const numPaths = paths.length;
+      const delayPointsMax = 0.3;
+      const delayPerPath = 0.25;
+
+      // Initialize points at 100 (Bottom of screen)
+      const allPoints = [];
+      for (let i = 0; i < numPaths; i++) {
+        const points = [];
+        allPoints.push(points);
+        for (let j = 0; j < numPoints; j++) {
+          points.push(100);
+        }
+      }
+
+      const render = () => {
+        for (let i = 0; i < numPaths; i++) {
+          const path = paths[i];
+          const points = allPoints[i];
+
+          // Logic for melting UP:
+          // Shape defines the "liquid" remaining.
+          // Anchored at TOP (V 0 H 0).
+          // Bottom edge defined by points.
+          // As points go 100 -> 0, bottom edge lifts, revealing content from bottom? 
+          // No, revealing content from bottom as it goes up.
+
+          let d = `M 0 ${points[0]} C`;
+
+          for (let j = 0; j < numPoints - 1; j++) {
+            const p = ((j + 1) / (numPoints - 1)) * 100;
+            const cp = p - ((1 / (numPoints - 1)) * 100) / 2;
+            d += ` ${cp} ${points[j]} ${cp} ${points[j + 1]} ${p} ${points[j + 1]}`;
+          }
+
+          d += ` V 0 H 0 Z`;
+          path.setAttribute("d", d);
         }
       };
 
-      const initializeAnimation = async () => {
-        await waitForFonts();
+      const tl = gsap.timeline({
+        onUpdate: render,
+        defaults: {
+          ease: "power2.inOut",
+          duration: 0.9,
+        },
+        onComplete: () => setShowPreloader(false),
+      });
 
-        gsap.set(".preloader-header h1", { opacity: 0 });
+      // Animate points
+      const pointsDelay = [];
+      for (let i = 0; i < numPoints; i++) {
+        pointsDelay[i] = Math.random() * delayPointsMax;
+      }
 
-        const preloaderHeaderSplit = SplitText.create(".preloader-header h1", {
-          type: "chars",
-          charsClass: "char",
-          mask: "chars",
-        });
+      for (let i = 0; i < numPaths; i++) {
+        const points = allPoints[i];
+        // Reverse order for paths (top layer melts first or last?)
+        // Usually back layer (last index) reveals first? 
+        // Let's standardise: 
+        // i=0 is top path in SVG order? No, usually last in DOM is on top.
+        // paths[0] is behind paths[1].
+        // We want front layer to melt, revealing back layer, revealing site.
+        // So paths[1] moves first? Or paths[0]?
+        // If paths[1] moves first (drops), we see paths[0]. Then paths[0] drops.
 
-        const chars = preloaderHeaderSplit.chars;
+        // Snippet logic: delayPerPath * (isOpened ? i : (numPaths - i - 1))
+        // We want separate delays.
+        // Let's make the front-most layer (last index) go first?
+        // Actually, if we want a "wave", they usually go close together.
+        // Let's stick to a simple sequence.
 
-        chars.forEach((char, index) => {
-          gsap.set(char, { yPercent: index % 2 === 0 ? -100 : 100 });
-        });
+        const pathDelay = delayPerPath * (numPaths - i - 1);
 
-        gsap.set(".preloader-header h1", { opacity: 1 });
-
-        const preloaderImages = gsap.utils.toArray(".preloader-images .img");
-        const preloaderImagesInner = gsap.utils.toArray(
-          ".preloader-images .img img"
-        );
-
-        const tl = gsap.timeline({ delay: 0.25 });
-
-        tl.to(".progress-bar", {
-          scaleX: 1,
-          duration: 4,
-          ease: "power3.inOut",
-        })
-          .set(".progress-bar", { transformOrigin: "right" })
-          .to(".progress-bar", {
-            scaleX: 0,
-            duration: 1,
-            ease: "power3.in",
-          });
-
-        preloaderImages.forEach((preloaderImg, index) => {
+        for (let j = 0; j < numPoints; j++) {
+          const delay = pointsDelay[j];
           tl.to(
-            preloaderImg,
+            points,
             {
-              clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-              duration: 1,
-              ease: "hop",
-              delay: index * 0.75,
+              [j]: 0, // Animate to top
+              duration: 1.2, // Slightly slower feel
+              ease: "power2.out"
             },
-            "-=5"
+            delay + pathDelay
           );
-        });
-
-        preloaderImagesInner.forEach((preloaderImageInner, index) => {
-          tl.to(
-            preloaderImageInner,
-            {
-              scale: 1,
-              duration: 1.5,
-              ease: "hop",
-              delay: index * 0.75,
-            },
-            "-=5.25"
-          );
-        });
-
-        tl.to(
-          chars,
-          {
-            yPercent: 0,
-            duration: 1,
-            ease: "hop",
-            stagger: 0.025,
-          },
-          "-=5"
-        );
-
-        tl.to(
-          ".preloader-images",
-          {
-            clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-            duration: 1,
-            ease: "hop",
-          },
-          "-=1.5"
-        );
-
-        tl.to(
-          chars,
-          {
-            yPercent: (index) => (index % 2 === 0 ? 100 : -100),
-            duration: 1,
-            ease: "hop",
-            stagger: 0.025,
-          },
-          "-=2.5"
-        );
-
-        tl.to(
-          ".preloader",
-          {
-            clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
-            duration: 1.75,
-            ease: "hop",
-            onStart: () => {
-              gsap.set(".preloader", { pointerEvents: "none" });
-            },
-            onComplete: () => {
-              setTimeout(() => {
-                setLoaderAnimating(false);
-                setShowPreloader(false);
-              }, 100);
-            },
-          },
-          "-=0.5"
-        );
-      };
-
-      initializeAnimation();
+        }
+      }
     },
-    { scope: preloaderRef, dependencies: [showPreloader] }
+    { scope: overlayRef, dependencies: [showPreloader] }
   );
 
-  if (!showPreloader) {
-    return null;
-  }
+  if (!showPreloader) return null;
 
   return (
-    <>
-      <div className="preloader" ref={preloaderRef}>
-        <div className="progress-bar"></div>
-
-        <div className="preloader-images">
-          <div className="img">
-            <img src="/loading/loading_1.webp" alt="" />
-          </div>
-          <div className="img">
-            <img src="/loading/loading_2.webp" alt="" />
-          </div>
-          <div className="img">
-            <img src="/loading/loading_3.webp" alt="" />
-          </div>
-          <div className="img">
-            <img src="/loading/loading_4.webp" alt="" />
-          </div>
-        </div>
-      </div>
-
-      <div className="preloader-header">
-        <h1>Indigen Services</h1>
-      </div>
-    </>
+    <div className="preloader-active" ref={overlayRef}>
+      <svg
+        className="shape-overlays"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <linearGradient id="gradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#70FF4D" />
+            <stop offset="100%" stopColor="#2a2a2a" />
+          </linearGradient>
+          <linearGradient id="gradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#2a2a2a" />
+            <stop offset="100%" stopColor="#70FF4D" />
+          </linearGradient>
+        </defs>
+        <path className="shape-overlays__path" fill="url(#gradient2)" d="M 0 100 L 100 100 V 0 H 0 Z"></path>
+        <path className="shape-overlays__path" fill="url(#gradient1)" d="M 0 100 L 100 100 V 0 H 0 Z"></path>
+      </svg>
+    </div>
   );
 };
 

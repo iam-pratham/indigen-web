@@ -1,0 +1,187 @@
+.stats-section {
+    width: 100%;
+    padding: 10rem 0 9rem 0;
+    background-color: var(--base-100);
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background blob for that modern glow */
+/* Background blob removed */
+
+.stats-container {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 6rem;
+    align-items: start;
+    position: relative;
+    z-index: 2;
+}
+
+/* Left Content */
+.stats-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: flex-start;
+    position: sticky;
+    top: 8rem;
+}
+
+.stats-label {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--base-500);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.stats-label::before {
+    content: "";
+    display: block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--base-500);
+    box-shadow: 0 0 10px var(--base-500);
+    border-radius: 50%;
+}
+
+.stats-heading {
+    font-family: var(--font-big-shoulders-display), sans-serif;
+    font-size: 8rem;
+    line-height: 0.85;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin-left: -0.3rem;
+}
+
+/* Right Grid - Bento Style */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 3rem 2.5rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.stat-card:hover {
+    border-color: var(--base-500);
+    background: rgba(112, 255, 77, 0.02);
+    box-shadow: 0 0 30px rgba(112, 255, 77, 0.1);
+    transform: translateY(-5px);
+}
+
+.stat-icon-wrapper {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.25rem;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover .stat-icon-wrapper {
+    background: var(--base-500);
+    color: #000;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.stat-number {
+    font-family: var(--font-pp-neue-montreal), sans-serif;
+    font-size: 5rem;
+    font-weight: 400;
+    color: #fff;
+    line-height: 0.9;
+    display: flex;
+    align-items: flex-start;
+    letter-spacing: -0.04em;
+}
+
+.stat-suffix {
+    font-size: 2.5rem;
+    color: var(--base-500);
+    margin-top: 0.2rem;
+    font-weight: 300;
+}
+
+.stat-title {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.875rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Feature 1st card to be larger if desired, or keep uniform grid for sleekness. 
+   Let's keep uniform but tight interaction. */
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .stats-section {
+        padding: 6rem 0;
+    }
+
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .stats-content {
+        align-items: flex-start;
+        text-align: left;
+        position: relative;
+        top: 0;
+    }
+
+    .stats-heading {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-heading {
+        font-size: 3.5rem;
+    }
+
+    .stat-card {
+        padding: 2rem;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .stat-number {
+        font-size: 3.5rem;
+    }
+}

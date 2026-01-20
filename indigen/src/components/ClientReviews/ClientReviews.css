@@ -1,115 +1,312 @@
-.client-reviews {
+/* ClientReviews.css - The "Modern Slider" */
+
+.testimonials-section {
+  padding: 0rem 0 4rem 0;
+  /* Reduced top padding significantly */
   position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: var(--base-100);
+  /* Clean background to let content focus */
 }
 
-.client-reviews .review-card {
-  position: relative;
-  width: 100%;
-  height: 100svh;
-  padding: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-}
-
-.client-reviews .review-card-container {
-  position: relative;
-  width: 60%;
-  height: 50%;
-  display: flex;
-  padding: 2rem;
-  border-radius: 1rem;
-  will-change: transform;
-  color: #ffffff;
-}
-
-.client-reviews #review-card-1 {
-  background-color: #2a2a2a;
-}
-
-.client-reviews #review-card-2 {
-  background-color: #252525;
-}
-
-.client-reviews #review-card-3 {
-  background-color: #2f2f2f;
-}
-
-.client-reviews #review-card-4 {
-  background-color: #2a2a2a;
-}
-
-.client-reviews #review-card-5 {
-  background-color: #252525;
-}
-
-.client-reviews #review-card-6 {
-  background-color: #2f2f2f;
-}
-
-.client-reviews .review-card-content-wrapper {
-  width: 100%;
-  height: 100%;
+/* Header */
+.testimonials-header {
+  margin-bottom: 2rem;
+  /* Reduced from 6rem */
+  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.testimonials-title {
+  font-family: var(--font-big-shoulders-display), sans-serif;
+  font-size: 8rem;
+  line-height: 0.85;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0 0 1rem 0;
+}
+
+.testimonials-subtitle {
+  font-family: var(--font-pp-neue-montreal), sans-serif;
+  color: var(--base-300);
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.25rem;
+}
+
+/* Display Container - The Fixed Stage */
+.testimonial-display {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: 650px;
+  /* Increased height for spacing */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content removed as we use absolute positioning */
+}
+
+/* Background Glow - More Dynamic & Animated */
+.testimonial-bg-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(112, 255, 77, 0.15) 0%, transparent 65%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+  animation: glow-breathe 6s ease-in-out infinite alternate;
+}
+
+@keyframes glow-breathe {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.9;
+  }
+}
+
+
+/* Clean Content Block - Floating Center Card */
+.testimonial-content {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* Vertically center content in fixed box */
+  gap: 1rem;
+
+  /* Card Style Dotted Layout - Static & Simple */
+  width: 100%;
+  max-width: 950px;
+  height: 440px;
+  /* Reduced STATIC HEIGHT */
+  padding: 2rem;
+  /* Reduced padding slightly */
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  /* Clearer dashed border */
+  border-radius: 32px;
+  background: transparent;
+  /* No glass effect, just border */
+  backdrop-filter: none;
 }
 
-.client-reviews h3.review-card-text {
-  font-size: 3rem;
-  letter-spacing: 0;
-  color: #ffffff;
+/* The Aesthetic Glass HUD */
+.testimonial-glass-panel {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  padding: 0;
+  width: auto;
 }
 
-.client-reviews p.review-card-client {
-  color: #ffffff;
+.testimonial-glass-panel:hover {
+  border: none;
+  box-shadow: none;
 }
 
-.client-reviews p.sm.review-card-client-company {
-  color: #ffffff;
-  opacity: 0.6;
+/* Giant Watermark Quote */
+.quote-watermark {
+  display: none;
 }
 
-.client-reviews #review-card-1 p.sm.review-card-client-company,
-.client-reviews #review-card-4 p.sm.review-card-client-company,
-.client-reviews #review-card-5 p.sm.review-card-client-company {
-  color: #ffffff;
-  opacity: 0.6;
+/* Quote Icon */
+.testimonial-quote-icon {
+  font-size: 2.5rem;
+  color: var(--base-500);
+  opacity: 1;
+  margin-bottom: 0.5rem;
 }
 
-@media (max-width: 1000px) {
-  .client-reviews .review-card-container {
-    flex-direction: column;
-    gap: 0;
-    width: 90%;
-    height: 100%;
-    padding: 1.25rem;
+/* Text - Auto Height */
+.testimonial-text {
+  font-family: var(--font-pp-neue-montreal), sans-serif;
+  font-size: 2rem;
+  line-height: 1.35;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  max-width: 100%;
+  height: auto;
+  /* No flex align needed if auto height */
+}
+
+/* Client Details */
+.testimonial-details {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  position: relative;
+  /* Decorative top line */
+  padding-top: 1.5rem;
+}
+
+.testimonial-details::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 1px;
+  background: var(--base-500);
+  opacity: 0.3;
+}
+
+.client-info {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.client-name {
+  font-family: var(--font-big-shoulders-display);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+}
+
+.client-role {
+  font-family: var(--font-geist-mono);
+  font-size: 0.85rem;
+  color: var(--base-500);
+  /* Accent color */
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  opacity: 0.9;
+}
+
+/* Remove old avatar styles */
+.client-avatar {
+  display: none;
+}
+
+
+/* Navigation - Pinned Bottom */
+.testimonial-nav {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  justify-content: center;
+  z-index: 2;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.8rem 2rem;
+  /* Text padding */
+  width: auto;
+  /* Not fixed width */
+  height: auto;
+  border-radius: 100px;
+  /* Pill */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-geist-mono);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  border-color: var(--base-500);
+  color: #000;
+  /* Black text on green hover */
+  background: var(--base-500);
+  /* Solid green bg */
+  transform: translateY(-2px);
+  /* Slight lift */
+}
+
+/* Dots */
+.nav-dots {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.nav-dot {
+  width: 3rem;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav-dot:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.nav-dot.active {
+  background: var(--base-500);
+  width: 5rem;
+}
+
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .testimonial-text {
+    font-size: 1.75rem;
   }
 
-  .client-reviews .review-card-content-wrapper {
-    width: 100%;
-    justify-content: center;
-    gap: 2rem;
+  .testimonials-title {
+    font-size: 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonial-text {
+    font-size: 1.35rem;
+    /* Readable mobile size */
   }
 
-  .client-reviews .review-card-index {
-    flex: 1;
+  .testimonials-title {
+    font-size: 3.5rem;
   }
 
-  .client-reviews .review-card-content {
-    height: 100%;
+  .testimonial-nav {
+    gap: 1rem;
   }
 
-  .client-reviews h3.review-card-text {
-    font-size: 2rem;
+  .nav-dot {
+    width: 2rem;
   }
 
-  .client-reviews .review-card {
-    padding: 3rem 0 0 0;
+  .nav-dot.active {
+    width: 3rem;
   }
 }

@@ -1,0 +1,20 @@
+.svg-stage-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Reset spacing to let flexbox handle it */
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 10;
+    flex: 1;
+    /* Allow it to take up available space if needed, or just let space-between work */
+}
+
+#svg-stage {
+    width: 100%;
+    max-width: 280px;
+    overflow: visible;
+    height: auto;
+}

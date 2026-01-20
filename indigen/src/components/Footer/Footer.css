@@ -2,7 +2,10 @@ footer {
   position: relative;
   width: 100vw;
   height: 100svh;
-  background-color: #2f2f2f;
+  background-color: rgba(255, 255, 255, 0.02);
+  /* Match Card Background */
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  /* Separator */
   color: #e5e7eb;
   padding: 2rem;
 }

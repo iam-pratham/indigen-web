@@ -63,7 +63,7 @@ export default function Button({
         const split = SplitText.create(labelRef.current, {
           type: "lines",
           mask: "lines",
-          linesClass: "line++",
+          linesClass: "line",
           lineThreshold: 0.1,
         });
 
@@ -76,11 +76,13 @@ export default function Button({
           gsap.set(iconRef.current, { scale: 0 });
         }
 
+        gsap.set(buttonRef.current, { autoAlpha: 1 });
+
         const animationProps = {
           y: "0%",
-          duration: 1,
+          duration: 1.2,
           stagger: 0.1,
-          ease: "power4.out",
+          ease: "power3.out",
           delay: delay,
         };
 
@@ -137,6 +139,7 @@ export default function Button({
       ref={buttonRef}
       href={href}
       className={`button button--${variant}`}
+      style={{ visibility: "hidden" }}
       onClick={(e) => {
         if (!href) return;
         e.preventDefault();
