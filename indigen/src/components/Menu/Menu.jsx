@@ -612,7 +612,6 @@ const Menu = ({ pageRef }) => {
             >
               <a
                 href={item.route}
-                onMouseEnter={() => router.prefetch(item.route)}
                 ref={(el) => {
                   menuLinksRef.current[index] = el;
                 }}

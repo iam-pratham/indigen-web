@@ -138,7 +138,6 @@ export default function Button({
     <a
       ref={buttonRef}
       href={href}
-      onMouseEnter={() => router.prefetch(href)}
       className={`button button--${variant}`}
       style={{ visibility: "hidden" }}
       onClick={(e) => {

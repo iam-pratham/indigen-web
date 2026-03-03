@@ -99,12 +99,9 @@ export const useViewTransition = () => {
     }
 
 
-    gsap.ticker.lagSmoothing(20, 16);
-
     const timeline = gsap.timeline({
       onUpdate: render,
       onComplete: () => {
-        gsap.ticker.lagSmoothing(500, 33);
         document.body.style.overflow = originalOverflow;
         if (overlay && overlay.parentNode) {
           overlay.parentNode.removeChild(overlay);
