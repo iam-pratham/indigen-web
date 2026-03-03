@@ -84,6 +84,7 @@ const WorkPage = () => {
               <div
                 className="project-image-container"
                 onClick={() => navigateWithTransition(`/work/${project.slug}`)}
+                onMouseEnter={() => router.prefetch(`/work/${project.slug}`)}
               >
                 <div className="project-overlay"></div>
                 <img

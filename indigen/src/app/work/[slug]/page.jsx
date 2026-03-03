@@ -106,7 +106,7 @@ const ProjectPage = () => {
 
             {nextProject && (
                 <section className="next-project">
-                    <div className="next-project-content" onClick={() => navigateWithTransition(`/work/${nextProject.slug}`)} style={{ cursor: 'pointer' }}>
+                    <div className="next-project-content" onClick={() => navigateWithTransition(`/work/${nextProject.slug}`)} onMouseEnter={() => router.prefetch(`/work/${nextProject.slug}`)} style={{ cursor: 'pointer' }}>
                         <Copy animateOnScroll={true}>
                             <p style={{ marginBottom: "1rem" }}>Next Project</p>
                             <h2>Next</h2>
